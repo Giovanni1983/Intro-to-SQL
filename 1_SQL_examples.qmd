@@ -5,3 +5,10 @@ format: html
 editor: visual
 ---
 
+```{r}
+source("./fct_connections.R")
+
+db_conn <- connect_DB()
+
+```
+
