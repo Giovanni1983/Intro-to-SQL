@@ -2,13 +2,44 @@
 title: "1_SQL_examples"
 author: "GMan1983"
 format: html
-editor: visual
 ---
 
 ```{r}
 source("./fct_connections.R")
 
 db_conn <- connect_DB()
-
+db_conn
 ```
 
+## Running SQL query
+And send the query output to an R data frame by defining output.var
+
+```{sql}
+#| connection = db_conn,
+#| output.var = "df_extract"
+SELECT FCC.WageType
+      ,FCC.Shift
+      ,FCC.LevelOneOperators
+      ,FCC.LevelTwoOperators
+      ,FCC.Calls
+      ,FCC.Date
+FROM FactCallCenter FCC
+WHERE (FCC.Shift = 'PM1' OR FCC.Shift = 'PM2') AND
+      (FCC.LevelTwoOperators <= 10)
+```
+
+```{r}
+head( df_extract )
+```
+
+
+## Running .sql files
+
+```{sql}
+#| connection = db_conn, 
+#| code=readLines("1_query.sql")
+```
+
+```{r}
+readLines("1_query.sql")
+```
