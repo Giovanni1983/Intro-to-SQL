@@ -1,7 +1,9 @@
 ---
 title: "1_SQL_examples"
 author: "GMan1983"
-format: html
+format: 
+  html:
+    code-tools: true
 ---
 
 ```{r}
