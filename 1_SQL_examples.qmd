@@ -46,5 +46,3 @@ head( df_extract )
 ```{r}
 readLines("1_query.sql")
 ```
-
-
